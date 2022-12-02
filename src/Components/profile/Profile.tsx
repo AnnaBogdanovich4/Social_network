@@ -10,9 +10,9 @@ export const Profile = () => {
             <Avatar/>
             <Newpost/>
             <div className={style.myPosts}>
-                <Post/>
-                <Post/>
-                <Post/>
+                <Post description={'Hi!'} countLike={15} countDislike={1}/>
+                <Post description={'How are you?'} countLike={10} countDislike={0}/>
+                <Post description={"I'm OK, and you?"} countLike={5} countDislike={0}/>
             </div>
         </div>
     )
