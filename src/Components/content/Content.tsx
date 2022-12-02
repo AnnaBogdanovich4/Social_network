@@ -6,7 +6,7 @@ export const Content = () => {
     return (
         <div className={style.content}>
             <Profile/>
-            <Message/>
+            {/*<Message/>*/}
         </div>
     )
 }
