@@ -1,9 +1,14 @@
-import style from "./Header.module.css"
-export const Header = () => {
+import style from "./Navbar.module.css"
+export const Navbar = () => {
     return(
-        <div className={style.header}>
-            <img src="src/Components/header/Header" alt=""/>
-            <h1>My social network</h1>
+        <div className={style.navbar}>
+           <ul>
+               <li><a href="#">Profile</a></li>
+               <li><a href="#">Messages</a></li>
+               <li><a href="#">News</a></li>
+               <li><a href="#">Music</a></li>
+               <li><a href="#">Settings</a></li>
+           </ul>
         </div>
     )
 }

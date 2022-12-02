@@ -1,10 +1,12 @@
-import style from './Header.module.css'
+import style from './Content.module.css'
+import {Profile} from '../profile/Profile';
+import {Message} from '../message/Message';
 
-export const Header = () => {
+export const Content = () => {
     return (
-        <div className={style.header}>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPHRvtFUvNT9Rrpz2HE4gu05hPPg8m7DweCg&usqp=CAU" alt="logo"/>
-            <h1>My social network</h1>
+        <div className={style.content}>
+            <Profile/>
+            <Message/>
         </div>
     )
 }

@@ -1,8 +1,9 @@
-import style from "./Profile.module.css"
-export const Profile = () => {
-    return(
-        <div className={style.profile}>
-            <h1>Profile</h1>
+import style from './Message.module.css'
+
+export const Message = () => {
+    return (
+        <div className={style.messages}>
+            <h2>Message</h2>
         </div>
     )
 }
