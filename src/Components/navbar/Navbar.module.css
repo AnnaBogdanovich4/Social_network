@@ -13,6 +13,6 @@ a{
     color: white;
     text-decoration-line: none;
 }
-a:active{
+.active{
     color: grey;
 }
