@@ -1,0 +1,12 @@
+.correspondent{
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+.correspondent a{
+    color: #7e5b03;
+}
+.correspondent img{
+    height: 60px;
+    width: 60px;
+}

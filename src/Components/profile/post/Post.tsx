@@ -1,16 +1,17 @@
 import style from './Post.module.css'
 
-export type Post = {
+export type PostType = {
+    src: string
     description: string
     countLike: number
     countDislike: number
 }
-export const Post = (props: Post) => {
+export const Post = (props: PostType) => {
     return (
         <div className={style.allpost}>
             <div className={style.post}>
                 <img
-                    src="https://vibir.ru/wp-content/uploads/2019/10/avatarka-dlya-zhenshhin-glavnye-pravila-vybora.jpg"
+                    src={props.src}
                     alt="" className={style.img}/>
                 <div>{props.description}</div>
             </div>

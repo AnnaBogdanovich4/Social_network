@@ -1,9 +1,15 @@
 import style from './Dialogs.module.css'
 
-export const Dialogs = () => {
+export type DialogType={
+    src: string
+    message: string
+}
+
+export const Dialogs = (props:DialogType) => {
     return (
         <div className={style.dialogs}>
-            <h2>Dialogs</h2>
+            <img src={props.src}/>
+            <p>{props.message}</p>
         </div>
     )
 }
