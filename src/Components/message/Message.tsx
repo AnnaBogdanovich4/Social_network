@@ -20,24 +20,10 @@ export const Message = () => {
     return (
         <div className={style.messages}>
             <div className={style.correspondents}>
-                <Correspondent id={correspondentData[0].id} name={correspondentData[0].name}
-                               src={correspondentData[0].src}/>
-                <Correspondent id={correspondentData[1].id} name={correspondentData[1].name}
-                               src={correspondentData[1].src}/>
-                <Correspondent id={correspondentData[2].id} name={correspondentData[2].name}
-                               src={correspondentData[2].src}/>
-                <Correspondent id={correspondentData[3].id} name={correspondentData[3].name}
-                               src={correspondentData[3].src}/>
-                <Correspondent id={correspondentData[4].id} name={correspondentData[4].name}
-                               src={correspondentData[4].src}/>
-                <Correspondent id={correspondentData[5].id} name={correspondentData[5].name}
-                               src={correspondentData[5].src}/>
+                {correspondentData.map(el => <Correspondent key={el.id} id={el.id} src={el.src} name={el.name}/>)}
             </div>
             <div className={style.dialogs}>
-                <Dialogs src={dialogsData[0].src} message={dialogsData[0].message}/>
-                <Dialogs src={dialogsData[1].src} message={dialogsData[1].message}/>
-                <Dialogs src={dialogsData[2].src} message={dialogsData[2].message}/>
-                <Dialogs src={dialogsData[3].src} message={dialogsData[3].message}/>
+                {dialogsData.map(el => <Dialogs key={el.id} src={el.src} message={el.message}/>)}
             </div>
         </div>
     )

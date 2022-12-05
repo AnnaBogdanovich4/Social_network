@@ -1,5 +1,4 @@
-.dialogs{
-   padding: 10px;
-    background: #fafa3c;
+.dialogs {
     display: flex;
+    padding: 10px;
 }

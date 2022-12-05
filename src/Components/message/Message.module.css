@@ -9,12 +9,11 @@
     grid-area: c;
     display: flex;
     flex-direction: column;
-    background: #88b248;
+    background: #97c251;
 }
 .dialogs{
     grid-area: d;
-    height: 100%;
     display: flex;
     flex-direction: column;
-
+    background: #fafa72;
 }
