@@ -1,11 +1,6 @@
 import style from './Avatar.module.css'
-export type AvatarType = {
-    src: string
-    name: string
-    age: string
-    zodiac: string
-    professional: string
-}
+import {AvatarType} from '../../../types';
+
 export const Avatar = (props:AvatarType) => {
     return (
         <div className={style.avatar}>

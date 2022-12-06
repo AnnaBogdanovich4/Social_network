@@ -1,11 +1,6 @@
 import style from './Post.module.css'
+import {PostType} from '../../../types';
 
-export type PostType = {
-    src: string
-    description: string
-    countLike: number
-    countDislike: number
-}
 export const Post = (props: PostType) => {
     return (
         <div className={style.allpost}>
