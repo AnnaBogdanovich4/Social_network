@@ -1,0 +1,11 @@
+.avatar{
+    display: flex;
+    background: #cece77;
+}
+.img{
+    height: 90px;
+}
+.description{
+    display: flex;
+    flex-direction: column;
+}

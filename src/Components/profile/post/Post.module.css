@@ -1,0 +1,15 @@
+.allpost{
+    display: flex;
+    flex-direction: column;
+    background: #fafabf;
+}
+.img{
+    width: 60px;
+    border-radius: 50%;
+}
+.button{
+    width: 50px;
+}
+.post{
+    display: flex;
+}

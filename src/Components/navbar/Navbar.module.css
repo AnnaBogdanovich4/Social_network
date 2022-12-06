@@ -1,7 +1,18 @@
-.header{
-    background: #9a2d2d;
+.navbar{
+    grid-area: n;
+    background: #c59828;
 }
-img{
-    width: 80px;
-    padding: 0px 40px;
+ul{
+    display: flex;
+    flex-direction: column;
+}
+li{
+    list-style: none;
+}
+a{
+    color: white;
+    text-decoration-line: none;
+}
+.active{
+    color: grey;
 }

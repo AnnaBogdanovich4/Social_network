@@ -1,13 +1,4 @@
-.header{
-    background: #9a2d2d;
-    display: flex;
-    min-height: 80px;
-    align-items: center;
-}
-img{
-    height: 60px;
-    padding: 0px 40px;
-}
-h1{
-    margin: 0 auto;
+.content{
+grid-area: c;
+    border: 2px solid grey;
 }
