@@ -1,5 +1,5 @@
 export type AvatarType = {
-    id?: number
+    id?: string
     src: string
     name: string
     age: string
@@ -7,11 +7,14 @@ export type AvatarType = {
     professional: string
 }
 export type PostType = {
-    id?: number
+    id?: string
     src: string
     description: string
     countLike: number
     countDislike: number
+}
+export type NewPostType = {
+    addPost:(newDescription: string) => void
 }
 export type DialogType = {
     id?: string
@@ -33,8 +36,10 @@ export type MessageType = {
 }
 export type AppType = {
     profilePage: ProfileType;
-    messagePage: MessageType
+    messagePage: MessageType;
 }
 export type StateType = {
     state: AppType
+    addPost:(newDescription: string) => void
+    addMessage:(newDialogs: string) => void
 }
