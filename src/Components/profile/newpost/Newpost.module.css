@@ -1,9 +1,0 @@
-.newpost{
-    background: #d5fc9a;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.button{
-    align-self: end;
-}
