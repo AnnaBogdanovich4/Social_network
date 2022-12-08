@@ -14,11 +14,17 @@ export const Content = (props: StateType) => {
             <Routes>
                 <Route path={'/profile'} element={<Profile state={props.state}
                                                            addPost={props.addPost}
-                                                           addMessage={props.addMessage}/>}/>
+                                                           addMessage={props.addMessage}
+                                                           changePost={props.changePost}
+                                                           changeMessage={props.changeMessage}/>
+                }/>
                 <Route path={'/messages/*'}
                        element={<Message state={props.state}
                                          addPost={props.addPost}
-                                         addMessage={props.addMessage}/>}/>
+                                         addMessage={props.addMessage}
+                                         changePost={props.changePost}
+                                         changeMessage={props.changeMessage}
+                       />}/>
                 <Route path={'/news'} element={<News/>}/>
                 <Route path={'/music'} element={<Music/>}/>
                 <Route path={'/settings'} element={<Settings/>}/>

@@ -1,20 +1,19 @@
 import style from './Newpost.module.css'
-import React, {useRef} from 'react';
+import React, {ChangeEvent} from 'react';
 import {NewPostType} from '../../../types';
 
 export const NewPost = (props:NewPostType) => {
-    const postRef = useRef<HTMLTextAreaElement>(null)
     const onClickHandler = () =>{
-        debugger
-        if (postRef.current) {
-            props.addPost(postRef.current.value)
-            postRef.current.value = ''
+            props.addPost(props.messageForNewPost)
         }
+
+    const onChangeHandler = (event:ChangeEvent<HTMLTextAreaElement>) =>{
+        props.changePost (event.currentTarget.value)
     }
     return (
         <div className={style.newpost}>
             <h3>New post</h3>
-            <textarea ref={postRef} name="." id="" cols={80} rows={5}/>
+            <textarea name="." id="" cols={80} rows={5} value={props.messageForNewPost} onChange={onChangeHandler}/>
             <button className={style.button} onClick={onClickHandler}>Add post</button>
         </div>
     )

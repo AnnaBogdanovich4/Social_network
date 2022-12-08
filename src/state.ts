@@ -30,6 +30,7 @@ export const state = {
                 description: 'I\'m OK, and you?', countLike: 5, countDislike: 0,
             },
         ],
+        messageForNewPost: ''
     },
     messagePage: {
         dialogsData: [
@@ -46,26 +47,38 @@ export const state = {
             {id: v1(), name: 'Alex', src: 'https://klike.net/uploads/posts/2019-03/1551511862_19.jpg'},
             {id: v1(), name: 'Esmi', src: 'https://klike.net/uploads/posts/2019-03/medium/1551511789_7.jpg'},
         ],
+        messageForNewDialog: ''
     }
 }
 
-export const addPost = (newDescription: string) => {
+export const addPost = () => {
     const newPost = {
         id: v1(),
         src: 'https://vibir.ru/wp-content/uploads/2019/10/avatarka-dlya-zhenshhin-glavnye-pravila-vybora.jpg',
-        description: newDescription,
+        description: state.profilePage.messageForNewPost,
         countLike: 0,
         countDislike: 0,
     }
     state.profilePage.postData.push(newPost)
+    changePost('')
     rerenderTree(state)
 }
+export const changePost = (newMessageForNewPost: string) => {
+    state.profilePage.messageForNewPost = newMessageForNewPost
+    rerenderTree(state)
+}
+
 export const addMessage = (newDialogs: string) => {
     const newMessage = {
-            id: v1(),
-            src: 'https://klike.net/uploads/posts/2019-03/medium/1551511784_4.jpg',
-            message: newDialogs
-        }
-        state.messagePage.dialogsData.push(newMessage)
+        id: v1(),
+        src: 'https://klike.net/uploads/posts/2019-03/medium/1551511784_4.jpg',
+        message: newDialogs
+    }
+    state.messagePage.dialogsData.push(newMessage)
+    changeMessage('')
+    rerenderTree(state)
+}
+export const changeMessage = (newMessageForNewDialog: string) => {
+    state.messagePage.messageForNewDialog = newMessageForNewDialog
     rerenderTree(state)
 }

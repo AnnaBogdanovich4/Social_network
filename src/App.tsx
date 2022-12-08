@@ -13,6 +13,8 @@ function App (props: StateType) {
             <Content state={props.state}
                      addPost={props.addPost}
                      addMessage={props.addMessage}
+                     changePost={props.changePost}
+                     changeMessage={props.changeMessage}
             />
         </div>
     );

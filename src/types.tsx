@@ -14,7 +14,9 @@ export type PostType = {
     countDislike: number
 }
 export type NewPostType = {
+    messageForNewPost: string
     addPost:(newDescription: string) => void
+    changePost:(newMessageForNewPost:string) => void
 }
 export type DialogType = {
     id?: string
@@ -29,10 +31,12 @@ export type CorrespondentType = {
 export type ProfileType = {
     avatarData: AvatarType[];
     postData: PostType[];
+    messageForNewPost: string;
 }
 export type MessageType = {
     correspondentData: CorrespondentType[];
     dialogsData: DialogType[];
+    messageForNewDialog: string
 }
 export type AppType = {
     profilePage: ProfileType;
@@ -42,4 +46,6 @@ export type StateType = {
     state: AppType
     addPost:(newDescription: string) => void
     addMessage:(newDialogs: string) => void
+    changePost:(messageForNewPost:string) => void
+    changeMessage:(messageForNewDialog:string) => void
 }
