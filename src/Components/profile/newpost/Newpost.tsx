@@ -1,15 +1,19 @@
 import style from './Newpost.module.css'
 import React, {ChangeEvent} from 'react';
 import {NewPostType} from '../../../types';
+import {addPostActionCreator, changePostActionCreator} from '../../../action-creater';
 
-export const NewPost = (props:NewPostType) => {
-    const onClickHandler = () =>{
-        props.dispatch({type: 'ADD-POST', messageForNewPost: props.messageForNewPost})
-         }
-
-    const onChangeHandler = (event:ChangeEvent<HTMLTextAreaElement>) =>{
-        props.dispatch({type: 'CHANGE-POST', newMessageForNewPost: event.currentTarget.value })
+export const NewPost = (props: NewPostType) => {
+    const onClickHandler = () => {
+        let action = addPostActionCreator(props.messageForNewPost)
+        props.dispatch(action)
     }
+
+    const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        let action = changePostActionCreator(event.currentTarget.value)
+        props.dispatch(action)
+    }
+
     return (
         <div className={style.newpost}>
             <h3>New post</h3>

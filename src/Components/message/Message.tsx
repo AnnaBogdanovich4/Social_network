@@ -3,13 +3,16 @@ import {Dialogs} from './dialogs/Dialogs';
 import {Correspondent} from './correspondent/Correspondent';
 import {StateType} from '../../types';
 import {ChangeEvent} from 'react';
+import {addMessageActionCreator, changeMessageActionCreator} from '../../action-creater';
 
 export const Message = (props: StateType) => {
     const onClickHandler = () => {
-        props.dispatch({type: 'ADD-MESSAGE', newDialogs: props.state.messagePage.messageForNewDialog})
+        let action = addMessageActionCreator(props.state.messagePage.messageForNewDialog)
+        props.dispatch(action)
     }
     const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch ({type: 'CHANGE-MESSAGE', newMessageForNewDialog: event.currentTarget.value})
+        let action = changeMessageActionCreator(event.currentTarget.value)
+        props.dispatch (action)
     }
     return (
         <div className={style.messages}>
