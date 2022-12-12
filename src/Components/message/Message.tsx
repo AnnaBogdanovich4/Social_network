@@ -6,10 +6,10 @@ import {ChangeEvent} from 'react';
 
 export const Message = (props: StateType) => {
     const onClickHandler = () => {
-        props.addMessage(props.state.messagePage.messageForNewDialog)
+        props.dispatch({type: 'ADD-MESSAGE', newDialogs: props.state.messagePage.messageForNewDialog})
     }
     const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        props.changeMessage(event.currentTarget.value)
+        props.dispatch ({type: 'CHANGE-MESSAGE', newMessageForNewDialog: event.currentTarget.value})
     }
     return (
         <div className={style.messages}>

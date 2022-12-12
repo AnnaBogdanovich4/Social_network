@@ -15,8 +15,7 @@ export type PostType = {
 }
 export type NewPostType = {
     messageForNewPost: string
-    addPost:(newDescription: string) => void
-    changePost:(newMessageForNewPost:string) => void
+    dispatch: (action: ActionType) => void
 }
 export type DialogType = {
     id?: string
@@ -44,8 +43,31 @@ export type AppType = {
 }
 export type StateType = {
     state: AppType
-    addPost:(newDescription: string) => void
-    addMessage:(newDialogs: string) => void
-    changePost:(messageForNewPost:string) => void
-    changeMessage:(messageForNewDialog:string) => void
+    dispatch: (action: ActionType) => void
+}
+export type StoreType = {
+    _state: AppType,
+    _callSubscribe: () => void,
+    getState: () => AppType,
+    subscribe:(observer: () => void) => void,
+    dispatch:(action: ActionType) => void
+}
+
+export type ActionType = AddPostActionType | ChangePostActionType | AddMessageActionType | ChangeMessageActionType
+
+export type AddPostActionType = {
+    type: 'ADD-POST',
+    messageForNewPost: string
+}
+export type ChangePostActionType = {
+    type: 'CHANGE-POST',
+    newMessageForNewPost: string
+}
+export type AddMessageActionType = {
+    type: 'ADD-MESSAGE',
+    newDialogs: string
+}
+export type ChangeMessageActionType = {
+    type: 'CHANGE-MESSAGE',
+    newMessageForNewDialog: string
 }

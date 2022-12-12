@@ -4,11 +4,11 @@ import {NewPostType} from '../../../types';
 
 export const NewPost = (props:NewPostType) => {
     const onClickHandler = () =>{
-            props.addPost(props.messageForNewPost)
-        }
+        props.dispatch({type: 'ADD-POST', messageForNewPost: props.messageForNewPost})
+         }
 
     const onChangeHandler = (event:ChangeEvent<HTMLTextAreaElement>) =>{
-        props.changePost (event.currentTarget.value)
+        props.dispatch({type: 'CHANGE-POST', newMessageForNewPost: event.currentTarget.value })
     }
     return (
         <div className={style.newpost}>

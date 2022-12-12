@@ -1,4 +1,3 @@
-// @ts-ignore
 import style from './Content.module.css'
 import {Profile} from '../profile/Profile';
 import {Message} from '../message/Message';
@@ -13,18 +12,11 @@ export const Content = (props: StateType) => {
         <div className={style.content}>
             <Routes>
                 <Route path={'/profile'} element={<Profile state={props.state}
-                                                           addPost={props.addPost}
-                                                           addMessage={props.addMessage}
-                                                           changePost={props.changePost}
-                                                           changeMessage={props.changeMessage}/>
+                                                           dispatch={props.dispatch}/>
                 }/>
                 <Route path={'/messages/*'}
                        element={<Message state={props.state}
-                                         addPost={props.addPost}
-                                         addMessage={props.addMessage}
-                                         changePost={props.changePost}
-                                         changeMessage={props.changeMessage}
-                       />}/>
+                                         dispatch={props.dispatch}/>}/>
                 <Route path={'/news'} element={<News/>}/>
                 <Route path={'/music'} element={<Music/>}/>
                 <Route path={'/settings'} element={<Settings/>}/>

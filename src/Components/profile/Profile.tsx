@@ -12,9 +12,8 @@ export const Profile = (props: StateType) => {
                  alt=""/>
             {props.state.profilePage.avatarData.map(el => <Avatar key={el.id} src={el.src} name={el.name} age={el.age} zodiac={el.zodiac}
                                           professional={el.professional}/>)}
-            <NewPost addPost={props.addPost}
-            messageForNewPost={props.state.profilePage.messageForNewPost}
-            changePost={props.changePost}/>
+            <NewPost dispatch={props.dispatch}
+            messageForNewPost={props.state.profilePage.messageForNewPost}/>
             <div className={style.myPosts}>
                 {props.state.profilePage.postData.map(el => <Post key={el.id} src={el.src} description={el.description} countLike={el.countLike}
                                           countDislike={el.countDislike}/>)}

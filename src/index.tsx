@@ -4,21 +4,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import {BrowserRouter} from 'react-router-dom';
-import {AppType} from './types';
 
-const rerenderTreeIndex = (state: AppType) => {
+const rerenderTree = () => {
     ReactDOM.render(
         <BrowserRouter>
             <App state={store.getState()}
-                 addPost={store.addPost.bind(store)}
-                 addMessage={store.addMessage.bind(store)}
-                 changePost={store.changePost.bind(store)}
-                 changeMessage={store.changeMessage.bind(store)}/>
+                 dispatch={store.dispatch.bind(store)}
+            />
         </BrowserRouter>, document.getElementById('root'));
 
 }
-rerenderTreeIndex(store.getState())
+rerenderTree()
 
-store.subscribe(rerenderTreeIndex)
+store.subscribe(rerenderTree)
 
 

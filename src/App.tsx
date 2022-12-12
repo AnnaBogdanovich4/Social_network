@@ -11,11 +11,7 @@ function App (props: StateType) {
             <Header/>
             <Navbar/>
             <Content state={props.state}
-                     addPost={props.addPost}
-                     addMessage={props.addMessage}
-                     changePost={props.changePost}
-                     changeMessage={props.changeMessage}
-            />
+                     dispatch={props.dispatch}/>
         </div>
     );
 }

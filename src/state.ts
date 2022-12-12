@@ -1,6 +1,7 @@
 import {v1} from 'uuid';
-import {AppType} from './types';
-export const store = {
+import {ActionType, StoreType} from './types';
+
+export const store: StoreType = {
     _state: {
         profilePage: {
             avatarData: [{
@@ -36,7 +37,11 @@ export const store = {
             dialogsData: [
                 {id: v1(), src: 'https://klike.net/uploads/posts/2019-03/medium/1551511784_4.jpg', message: 'Hi!'},
                 {id: v1(), src: 'https://klike.net/uploads/posts/2019-03/1551511808_5.jpg', message: 'Hi'},
-                {id: v1(), src: 'https://klike.net/uploads/posts/2019-03/medium/1551511784_4.jpg', message: 'I love you'},
+                {
+                    id: v1(),
+                    src: 'https://klike.net/uploads/posts/2019-03/medium/1551511784_4.jpg',
+                    message: 'I love you'
+                },
                 {id: v1(), src: 'https://klike.net/uploads/posts/2019-03/1551511808_5.jpg', message: 'Me too'},
             ],
             correspondentData: [
@@ -50,44 +55,47 @@ export const store = {
             messageForNewDialog: ''
         }
     },
+    _callSubscribe () {
+        console.log('state had rerender')
+    },
     getState () {
         return this._state
     },
-    addPost (newDescription: string) {
-        const newPost = {
-            id: v1(),
-            src: 'https://vibir.ru/wp-content/uploads/2019/10/avatarka-dlya-zhenshhin-glavnye-pravila-vybora.jpg',
-            description: this.getState().profilePage.messageForNewPost,
-            countLike: 0,
-            countDislike: 0,
+    subscribe (observer: () => void) {
+        this._callSubscribe = observer
+    },
+    dispatch (action: ActionType) {
+        if (action.type === 'ADD-POST') {
+            const newPost = {
+                id: v1(),
+                src: 'https://vibir.ru/wp-content/uploads/2019/10/avatarka-dlya-zhenshhin-glavnye-pravila-vybora.jpg',
+                description: this.getState().profilePage.messageForNewPost,
+                countLike: 0,
+                countDislike: 0,
+            }
+            this.getState().profilePage.postData.unshift(newPost)
+            this.dispatch({type: 'CHANGE-POST', newMessageForNewPost: ''})
+            this._callSubscribe()
+        } else if (action.type === 'CHANGE-POST') {
+            this.getState().profilePage.messageForNewPost = action.newMessageForNewPost
+            this._callSubscribe()
+        } else { // @ts-ignore
+            if (action.type === 'ADD-MESSAGE') {
+                const newMessage = {
+                    id: v1(),
+                    src: 'https://klike.net/uploads/posts/2019-03/medium/1551511784_4.jpg',
+                    message: action.newDialogs
+                }
+                this.getState().messagePage.dialogsData.push(newMessage)
+                this.dispatch({type: 'CHANGE-MESSAGE', newMessageForNewDialog: ''})
+                this._callSubscribe()
+            } else if (action.type === 'CHANGE-MESSAGE') {
+                this.getState().messagePage.messageForNewDialog = action.newMessageForNewDialog
+                this._callSubscribe()
+            } else {
+                this.getState()
+            }
         }
-        this.getState().profilePage.postData.unshift(newPost)
-        this.changePost('')
-        this._rerenderTree(this.getState())
     },
-    changePost (newMessageForNewPost: string) {
-        this.getState().profilePage.messageForNewPost = newMessageForNewPost
-        this._rerenderTree(this.getState())
-    },
-    addMessage (newDialogs: string) {
-        const newMessage = {
-            id: v1(),
-            src: 'https://klike.net/uploads/posts/2019-03/medium/1551511784_4.jpg',
-            message: newDialogs
-        }
-        this.getState().messagePage.dialogsData.push(newMessage)
-        this.changeMessage('')
-        this._rerenderTree(this.getState())
-    },
-    changeMessage (newMessageForNewDialog: string) {
-        this.getState().messagePage.messageForNewDialog = newMessageForNewDialog
-        this._rerenderTree(this.getState())
-    },
-    _rerenderTree (tree: AppType) {
-        console.log('Hi')
-    },
-    subscribe (observer: (tree: AppType) => void) {
-        this._rerenderTree = observer
-    },
-    }
+}
 
