@@ -1,7 +1,7 @@
 import style from './Newpost.module.css'
 import React, {ChangeEvent} from 'react';
 import {NewPostType} from '../../../types';
-import {addPostActionCreator, changePostActionCreator} from '../../../action-creater';
+import {addPostActionCreator, changePostActionCreator} from '../../../reducers/profile-reducer';
 
 export const NewPost = (props: NewPostType) => {
     const onClickHandler = () => {

@@ -1,5 +1,7 @@
 import {v1} from 'uuid';
 import {ActionType, StoreType} from './types';
+import profileReducer from './reducers/profile-reducer';
+import messageReducer from './reducers/message-reducer';
 
 export const store: StoreType = {
     _state: {
@@ -65,37 +67,9 @@ export const store: StoreType = {
         this._callSubscribe = observer
     },
     dispatch (action: ActionType) {
-        if (action.type === 'ADD-POST') {
-            const newPost = {
-                id: v1(),
-                src: 'https://vibir.ru/wp-content/uploads/2019/10/avatarka-dlya-zhenshhin-glavnye-pravila-vybora.jpg',
-                description: this.getState().profilePage.messageForNewPost,
-                countLike: 0,
-                countDislike: 0,
-            }
-            this.getState().profilePage.postData.unshift(newPost)
-            this.dispatch({type: 'CHANGE-POST', newMessageForNewPost: ''})
-            this._callSubscribe()
-        } else if (action.type === 'CHANGE-POST') {
-            this.getState().profilePage.messageForNewPost = action.newMessageForNewPost
-            this._callSubscribe()
-        } else { // @ts-ignore
-            if (action.type === 'ADD-MESSAGE') {
-                const newMessage = {
-                    id: v1(),
-                    src: 'https://klike.net/uploads/posts/2019-03/medium/1551511784_4.jpg',
-                    message: action.newDialogs
-                }
-                this.getState().messagePage.dialogsData.push(newMessage)
-                this.dispatch({type: 'CHANGE-MESSAGE', newMessageForNewDialog: ''})
-                this._callSubscribe()
-            } else if (action.type === 'CHANGE-MESSAGE') {
-                this.getState().messagePage.messageForNewDialog = action.newMessageForNewDialog
-                this._callSubscribe()
-            } else {
-                this.getState()
-            }
-        }
+        this.getState().profilePage = profileReducer(this.getState().profilePage, action);
+        this.getState().messagePage = messageReducer(this.getState().messagePage, action);
+        this._callSubscribe();
     },
 }
 

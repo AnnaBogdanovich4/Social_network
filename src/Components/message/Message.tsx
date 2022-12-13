@@ -3,7 +3,7 @@ import {Dialogs} from './dialogs/Dialogs';
 import {Correspondent} from './correspondent/Correspondent';
 import {StateType} from '../../types';
 import {ChangeEvent} from 'react';
-import {addMessageActionCreator, changeMessageActionCreator} from '../../action-creater';
+import {addMessageActionCreator, changeMessageActionCreator} from '../../reducers/message-reducer';
 
 export const Message = (props: StateType) => {
     const onClickHandler = () => {
