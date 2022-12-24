@@ -4,19 +4,14 @@ import {Route, Routes} from 'react-router-dom';
 import {Music} from '../music/Music';
 import {News} from '../news/News';
 import {Settings} from '../settings/Settings';
-import {StateType} from '../../types';
 import {Messages} from '../message/Messages';
 
-export const Content = (props: StateType) => {
+export const Content = () => {
     return (
         <div className={style.content}>
             <Routes>
-                <Route path={'/profile'} element={<Profile state={props.state}
-                                                           dispatch={props.dispatch}/>
-                }/>
-                <Route path={'/messages/*'}
-                       element={<Messages state={props.state}
-                                          dispatch={props.dispatch}/>}/>
+                <Route path={'/profile'} element={<Profile/>}/>
+                <Route path={'/messages/*'} element={<Messages/>}/>
                 <Route path={'/news'} element={<News/>}/>
                 <Route path={'/music'} element={<Music/>}/>
                 <Route path={'/settings'} element={<Settings/>}/>

@@ -17,9 +17,6 @@ export type NewPostType = {
     value: string;
     callBackClick: () => void;
     callBackChange: (text: string) => void
-    // messageForNewPost: string
-    // // messageForNewPost: ProfileType
-    // dispatch: (action: ActionType) => void
 }
 export type DialogType = {
     id?: string
@@ -36,7 +33,6 @@ export type MessageType = {
     callBackClick: () => void;
     callBackChange: (text:string) => void
 }
-
 export type ProfileType = {
     avatarData: AvatarType[];
     postData: PostType[];

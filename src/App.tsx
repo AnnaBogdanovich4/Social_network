@@ -3,15 +3,13 @@ import style from './App.module.css';
 import {Header} from './Components/header/Header';
 import {Navbar} from './Components/navbar/Navbar';
 import {Content} from './Components/content/Content';
-import {StateType} from './types';
 
-function App (props: StateType) {
+function App () {
     return (
         <div className={style.app}>
             <Header/>
             <Navbar/>
-            <Content state={props.state}
-                     dispatch={props.dispatch}/>
+            <Content/>
         </div>
     );
 }
