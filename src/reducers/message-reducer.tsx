@@ -1,4 +1,4 @@
-import {ActionType, AddMessageActionType, ChangeMessageActionType, MessageType} from '../types';
+import {ActionType, AddMessageActionType, ChangeMessageActionType, MessagesType} from '../types';
 import {v1} from 'uuid';
 
 export const changeMessageActionCreator = (newMessageForNewDialog: string): ChangeMessageActionType => ({
@@ -10,7 +10,7 @@ export const addMessageActionCreator = (newDialogs: string): AddMessageActionTyp
     type: 'ADD-MESSAGE',
     newDialogs: newDialogs
 })
-let initialState: MessageType = {
+let initialState: MessagesType = {
     dialogsData: [
         {id: v1(), src: 'https://klike.net/uploads/posts/2019-03/medium/1551511784_4.jpg', message: 'Hi!'},
         {id: v1(), src: 'https://klike.net/uploads/posts/2019-03/1551511808_5.jpg', message: 'Hi'},

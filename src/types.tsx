@@ -14,8 +14,12 @@ export type PostType = {
     countDislike: number
 }
 export type NewPostType = {
-    messageForNewPost: string
-    dispatch: (action: ActionType) => void
+    value: string;
+    callBackClick: () => void;
+    callBackChange: (text: string) => void
+    // messageForNewPost: string
+    // // messageForNewPost: ProfileType
+    // dispatch: (action: ActionType) => void
 }
 export type DialogType = {
     id?: string
@@ -27,19 +31,25 @@ export type CorrespondentType = {
     name: string
     src: string
 }
+export type MessageType = {
+    value: string;
+    callBackClick: () => void;
+    callBackChange: (text:string) => void
+}
+
 export type ProfileType = {
     avatarData: AvatarType[];
     postData: PostType[];
     messageForNewPost: string;
 }
-export type MessageType = {
+export type MessagesType = {
     correspondentData: CorrespondentType[];
     dialogsData: DialogType[];
     messageForNewDialog: string
 }
 export type AppType = {
     profilePage: ProfileType;
-    messagePage: MessageType;
+    messagePage: MessagesType;
 }
 export type StateType = {
     state: AppType

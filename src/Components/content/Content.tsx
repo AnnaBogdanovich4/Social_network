@@ -1,11 +1,11 @@
 import style from './Content.module.css'
 import {Profile} from '../profile/Profile';
-import {Message} from '../message/Message';
 import {Route, Routes} from 'react-router-dom';
 import {Music} from '../music/Music';
 import {News} from '../news/News';
 import {Settings} from '../settings/Settings';
 import {StateType} from '../../types';
+import {Messages} from '../message/Messages';
 
 export const Content = (props: StateType) => {
     return (
@@ -15,8 +15,8 @@ export const Content = (props: StateType) => {
                                                            dispatch={props.dispatch}/>
                 }/>
                 <Route path={'/messages/*'}
-                       element={<Message state={props.state}
-                                         dispatch={props.dispatch}/>}/>
+                       element={<Messages state={props.state}
+                                          dispatch={props.dispatch}/>}/>
                 <Route path={'/news'} element={<News/>}/>
                 <Route path={'/music'} element={<Music/>}/>
                 <Route path={'/settings'} element={<Settings/>}/>

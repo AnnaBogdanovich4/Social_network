@@ -16,9 +16,5 @@
     display: flex;
     flex-direction: column;
     background: #fafa72;
+}
 
-}
-.dialogs button{
-    align-self: center;
-    width: 100px;
-}
