@@ -32,7 +32,7 @@ let initialState: MessagesType = {
     messageForNewDialog: ''
 }
 
-const messageReducer = (state=initialState, action: ActionType) => {
+const messageReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
         case 'ADD-MESSAGE':
             const newMessage = {
@@ -40,15 +40,12 @@ const messageReducer = (state=initialState, action: ActionType) => {
                 src: 'https://klike.net/uploads/posts/2019-03/medium/1551511784_4.jpg',
                 message: action.newDialogs
             }
-            state.dialogsData.push(newMessage)
-            state.messageForNewDialog = ''
-            return state
+            return {...state, dialogsData: [...state.dialogsData, newMessage], messageForNewDialog: ''}
         case 'CHANGE-MESSAGE':
-            state.messageForNewDialog = action.newMessageForNewDialog
-            return state
+            return {...state, messageForNewDialog: action.newMessageForNewDialog}
         default:
             return state
     }
 }
-
+//let state = {...state,dialogsData: [...dialogsData, newMessage]}
 export default messageReducer

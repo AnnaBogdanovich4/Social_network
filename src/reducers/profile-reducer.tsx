@@ -10,7 +10,7 @@ export const changePostActionCreator = (newMessageForNewPost: string): ChangePos
     type: 'CHANGE-POST',
     newMessageForNewPost: newMessageForNewPost
 })
-let initialState: ProfileType= {
+let initialState: ProfileType = {
     avatarData: [{
         id: v1(),
         src: 'https://klike.net/uploads/posts/2019-03/medium/1551511784_4.jpg',
@@ -51,12 +51,9 @@ const profileReducer = (state = initialState, action: ActionType) => {
                 countLike: 0,
                 countDislike: 0,
             }
-            state.postData.unshift(newPost)
-            state.messageForNewPost = ''
-            return state;
+            return {...state, postData: [newPost, ...state.postData], messageForNewPost: ''};
         case 'CHANGE-POST':
-            state.messageForNewPost = action.newMessageForNewPost
-            return state;
+            return {...state, messageForNewPost: action.newMessageForNewPost};
         default:
             return state
     }
