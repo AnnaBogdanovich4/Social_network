@@ -17,8 +17,9 @@ export const Messages = () => {
                     <div className={style.dialogs}>
                         {store.getState().messagePage.dialogsData.map(el => <Dialogs key={el.id} src={el.src}
                                                                                      message={el.message}/>)}
-                        <ContainerMessage state={store.getState()}
-                                          dispatch={store.dispatch}/>
+                        {/*<ContainerMessage state={store.getState()}*/}
+                        {/*                  dispatch={store.dispatch}/>*/}
+                        <ContainerMessage/>
                     </div>
                 </div>
             )}

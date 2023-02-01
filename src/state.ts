@@ -3,7 +3,7 @@ import {ActionType, StoreType} from './types';
 import profileReducer from './reducers/profile-reducer';
 import messageReducer from './reducers/message-reducer';
 
-export const store: StoreType = {
+export const storeOLD: StoreType = {
     _state: {
         profilePage: {
             avatarData: [{

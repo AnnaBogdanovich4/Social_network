@@ -2,6 +2,7 @@ import style from './Profile.module.css'
 import {Avatar} from './avatar/Avatar';
 import {Post} from './post/Post';
 import {ContainerNewPost} from './newpost/ContainerNewPost';
+import React from 'react';
 import {StoreContext} from '../../StoreContext';
 
 export const Profile = () => {
@@ -16,8 +17,9 @@ export const Profile = () => {
                                                                                age={el.age}
                                                                                zodiac={el.zodiac}
                                                                                professional={el.professional}/>)}
-                    <ContainerNewPost state={store.getState()}
-                                      dispatch={store.dispatch}/>
+                    {/*<ContainerSuperNewPost1 state={store.getState()}*/}
+                    {/*                       addPostActionCreator/>*/}
+                    <ContainerNewPost/>
                     <div className={style.myPosts}>
                         {store.getState().profilePage.postData.map(el => <Post key={el.id} src={el.src}
                                                                                description={el.description}
