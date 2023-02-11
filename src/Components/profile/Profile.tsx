@@ -17,8 +17,6 @@ export const Profile = () => {
                                                                                age={el.age}
                                                                                zodiac={el.zodiac}
                                                                                professional={el.professional}/>)}
-                    {/*<ContainerSuperNewPost1 state={store.getState()}*/}
-                    {/*                       addPostActionCreator/>*/}
                     <ContainerNewPost/>
                     <div className={style.myPosts}>
                         {store.getState().profilePage.postData.map(el => <Post key={el.id} src={el.src}

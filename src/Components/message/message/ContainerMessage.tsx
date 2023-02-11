@@ -2,6 +2,8 @@ import {Message} from './Message';
 import {connect} from 'react-redux';
 import {store} from '../../../store';
 import {addMessageActionCreator, changeMessageActionCreator} from '../../../reducers/message-reducer';
+import {RootStoreType} from '../../../types';
+import {Dispatch} from 'redux';
 
 // export const ContainerSuperMessage = (props: StateType) => {
 //     const callBackClick = () => {
@@ -17,17 +19,24 @@ import {addMessageActionCreator, changeMessageActionCreator} from '../../../redu
 //                  callBackChange={(text: string) => callBackChange(text)}
 //                  callBackClick={callBackClick}/>
 //         )}
+type mapStateToPropsType = {
+    value: string
+}
+type mapDispatchToPropsType = {
+    callBackClick: () => void;
+    callBackChange: (text: string) => void
+}
 
-let mapStateToProps = () => {
+let mapStateToProps = (store: RootStoreType): mapStateToPropsType => {
     return {
-        value: store.getState().messagePage.messageForNewDialog
+        value: store.messagePage.messageForNewDialog
     }
 }
 
-let mapDispatchToProps = () => {
+let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     return {
-        callBackClick: () => store.dispatch(addMessageActionCreator(store.getState().messagePage.messageForNewDialog)),
-        callBackChange: (text: string) => store.dispatch(changeMessageActionCreator(text))
+        callBackClick: () => dispatch(addMessageActionCreator(store.getState().messagePage.messageForNewDialog)),
+        callBackChange: (text: string) => dispatch(changeMessageActionCreator(text))
     }
 }
 export const ContainerMessage = connect(mapStateToProps, mapDispatchToProps)(Message)

@@ -1,8 +1,22 @@
 import {v1} from 'uuid';
-import {ActionType, StoreType} from './types';
+import {ActionType, MessagesType, ProfileType} from './types';
 import profileReducer from './reducers/profile-reducer';
 import messageReducer from './reducers/message-reducer';
-
+export type AppType = {
+    profilePage: ProfileType;
+    messagePage: MessagesType;
+}
+export type StateType = {
+    state: AppType
+    dispatch: (action: ActionType) => void
+}
+export type StoreType = {
+    _state: AppType,
+    _callSubscribe: () => void,
+    getState: () => AppType,
+    subscribe: (observer: () => void) => void,
+    dispatch: (action: ActionType) => void
+}
 export const storeOLD: StoreType = {
     _state: {
         profilePage: {

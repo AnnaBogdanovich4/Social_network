@@ -1,4 +1,4 @@
-import {ActionType, AddPostActionType, ChangePostActionType, ProfileType} from '../types';
+import {ActionType, AddPostActionType, AvatarType, ChangePostActionType, PostType} from '../types';
 import {v1} from 'uuid';
 
 export const addPostActionCreator = (messageForNewPost: string): AddPostActionType => ({
@@ -10,7 +10,7 @@ export const changePostActionCreator = (newMessageForNewPost: string): ChangePos
     type: 'CHANGE-POST',
     newMessageForNewPost: newMessageForNewPost
 })
-let initialState: ProfileType = {
+let initialState = {
     avatarData: [{
         id: v1(),
         src: 'https://klike.net/uploads/posts/2019-03/medium/1551511784_4.jpg',
@@ -18,7 +18,7 @@ let initialState: ProfileType = {
         age: '34',
         zodiac: 'Libra',
         professional: 'Front-end Developer',
-    },],
+    },] as AvatarType[],
     postData: [
         {
             id: v1(),
@@ -37,11 +37,12 @@ let initialState: ProfileType = {
             src: 'https://vibir.ru/wp-content/uploads/2019/10/avatarka-dlya-zhenshhin-glavnye-pravila-vybora.jpg',
             description: 'I\'m OK, and you?', countLike: 5, countDislike: 0,
         },
-    ],
+    ] as PostType[],
     messageForNewPost: ''
 }
+ type initialStateType = typeof initialState
 
-const profileReducer = (state = initialState, action: ActionType) => {
+const profileReducer = (state:initialStateType = initialState, action: ActionType): initialStateType => {
     switch (action.type) {
         case 'ADD-POST':
             const newPost = {

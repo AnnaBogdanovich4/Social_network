@@ -5,10 +5,10 @@ import {NewPostType} from '../../../types';
 export const NewPost = (props: NewPostType) => {
 
     const onClickHandler = () => {
-        props.callBackClick()
+        props.addPost()
     }
     const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        props.callBackChange (event.currentTarget.value)
+        props.changePost (event.currentTarget.value)
     }
 
     return (

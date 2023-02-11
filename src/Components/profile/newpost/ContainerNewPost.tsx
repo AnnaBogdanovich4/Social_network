@@ -2,6 +2,8 @@ import {changePostActionCreator, addPostActionCreator} from '../../../reducers/p
 import {NewPost} from './Newpost';
 import {connect} from 'react-redux';
 import {store} from '../../../store';
+import {Dispatch} from 'redux';
+import {RootStoreType} from '../../../types';
 
 // export const ContainerSuperNewPost = (props: StateType) => {
 //     const callBackClick = () => {
@@ -22,16 +24,23 @@ import {store} from '../../../store';
 //         </div>
 //     )
 // }
+type mapStateToPropsType = {
+    value: string
+}
+type mapDispatchToPropsType = {
+    changePost: (text: string) => void
+    addPost: () => void;
+}
 
-let mapStateToProps = () => {
+let mapStateToProps = (store: RootStoreType): mapStateToPropsType => {
     return {
-        value: store.getState().profilePage.messageForNewPost
+        value: store.profilePage.messageForNewPost
     }
 }
-let mapDispatchToProps = () => {
+let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     return {
-        callBackChange: (text: string) => store.dispatch(changePostActionCreator(text)),
-        callBackClick: () => store.dispatch(addPostActionCreator(store.getState().profilePage.messageForNewPost))
+        changePost: (text: string) => dispatch(changePostActionCreator(text)),
+        addPost: () => dispatch(addPostActionCreator(store.getState().profilePage.messageForNewPost))
     }
 }
 export const ContainerNewPost = connect(mapStateToProps, mapDispatchToProps)(NewPost)
