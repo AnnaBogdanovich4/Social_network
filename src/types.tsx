@@ -1,3 +1,5 @@
+import {rootReducer} from './store';
+
 export type AvatarType = {
     id?: string
     src: string
@@ -15,8 +17,8 @@ export type PostType = {
 }
 export type NewPostType = {
     value: string;
-    callBackClick: () => void;
-    callBackChange: (text: string) => void
+    addPost: () => void;
+    changePost: (text: string) => void
 }
 export type DialogType = {
     id?: string
@@ -31,7 +33,7 @@ export type CorrespondentType = {
 export type MessageType = {
     value: string;
     callBackClick: () => void;
-    callBackChange: (text:string) => void
+    callBackChange: (text: string) => void
 }
 export type ProfileType = {
     avatarData: AvatarType[];
@@ -43,23 +45,37 @@ export type MessagesType = {
     dialogsData: DialogType[];
     messageForNewDialog: string
 }
-export type AppType = {
-    profilePage: ProfileType;
-    messagePage: MessagesType;
+export type UsersType = {
+    userId: string,
+    src: string,
+    status: boolean,
+    name: string,
+    info: string,
+    country: string,
+    city: string,
 }
-export type StateType = {
-    state: AppType
-    dispatch: (action: ActionType) => void
-}
-export type StoreType = {
-    _state: AppType,
-    _callSubscribe: () => void,
-    getState: () => AppType,
-    subscribe:(observer: () => void) => void,
-    dispatch:(action: ActionType) => void
+export type AvaType = {
+    src: string
+    id: string
+    status: boolean
+    name: string,
+    info: string,
+    country: string,
+    city: string,
+    followed: (id: string) => void,
+    unfollowed: (id: string) => void,
+    addUsers: (users: UsersType[]) => void,
 }
 
-export type ActionType = AddPostActionType | ChangePostActionType | AddMessageActionType | ChangeMessageActionType
+export type RootStoreType = ReturnType <typeof rootReducer>
+
+export type ActionType = AddPostActionType
+    | ChangePostActionType
+    | AddMessageActionType
+    | ChangeMessageActionType
+    | FollowActionType
+    | UnfollowActionType
+    | SetUsersActionType
 
 export type AddPostActionType = {
     type: 'ADD-POST',
@@ -77,3 +93,17 @@ export type ChangeMessageActionType = {
     type: 'CHANGE-MESSAGE',
     newMessageForNewDialog: string
 }
+export type FollowActionType = {
+    type: 'FOLLOW',
+    id: string
+}
+export type UnfollowActionType = {
+    type: 'UNFOLLOW',
+    id: string
+}
+export type SetUsersActionType = {
+    type: 'SET_USERS',
+    users: UsersType[]
+}
+
+
